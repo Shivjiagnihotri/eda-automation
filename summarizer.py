@@ -25,7 +25,7 @@ def extract_doc_text(pdf_path):
     document_text = re.sub('([ \t]+)|([\n]+)', lambda m: ' ' if m.group(1) else '\n', document_text)
   except:
     document_text = extract_text(pdf_path, caching=True, codec='utf-8')
-    print("Supported documents are PDF, Docx and txt!")
+    st.write("Supported documents are PDF, Docx and txt!")
 
   return document_text
 
@@ -75,12 +75,12 @@ def text_chunking(new_text):
                 current_chunk += 1
                 chunks.append(sentence.split(' '))
         else:
-          # print(current_chunk)
+          # st.write(current_chunk)
           chunks.append(sentence.split(' '))
 
     for chunk_id in range(len(chunks)):
         chunks[chunk_id] = ' '.join(chunks[chunk_id])
-    # print("Total chunks of text are: ", len(chunks))
+    # st.write("Total chunks of text are: ", len(chunks))
   except:
     chunks = 0
   return chunks
@@ -89,7 +89,7 @@ def text_chunking(new_text):
 
 # This function takes in all the chunks, find the summary of each chunk and return all the summaries of chunks in list form.
 def transformers_summary(chunks):
-    print("Summarizing the text. Please wait .......")
+    st.write("Summarizing the text. Please wait .......")
     global all_transformers_summaries
     # Pre-allocate summaries list
     count = 1
@@ -102,7 +102,7 @@ def transformers_summary(chunks):
         try:
             res1 = summarizer(chunk, max_length=150, min_length= summary_length, do_sample=False)
         except Exception as e:
-            # print("Skipped chunk", count, "Error:", e)
+            # st.write("Skipped chunk", count, "Error:", e)
             count += 1
             continue
 
@@ -112,14 +112,14 @@ def transformers_summary(chunks):
 
         all_transformers_summaries[count-1] = res1
 
-        # Print summary
+        # st.write summary
         # Summarize chunk
         chunk_sum = res1[0]['summary_text']
         sentences = re.split(r'(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?|!)\s', chunk_sum)
         sentences = [sentence.strip().replace(' .', '.') for sentence in sentences]
         bullet_points = [f"• {sentence}" for sentence in sentences]
         bullet_list = "\n".join(bullet_points)
-        print(bullet_list)
+        st.write(bullet_list)
 
         count += 1
 
@@ -146,9 +146,9 @@ def find_summary_transformers(pdf_path):
             summary_by_transformers = prep_b4_save(txt_to_save)
             return summary_by_transformers
         else:
-            print("Please upload a pdf with less than 500 pages!" )
+            st.write("Please upload a pdf with less than 500 pages!" )
     else:
-        print("Document too short to summarize!")
+        st.write("Document too short to summarize!")
 
 
 raw_text = '''
