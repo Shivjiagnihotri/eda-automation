@@ -150,8 +150,8 @@ if uploaded_file is not None:
 
     if select_method2 == "Multi Class Boxplot":
         # Get the names of all columns with data type 'object' (categorical columns)
-        cat_cols = df.select_dtypes(include='object').columns.tolist()
-        selected_column = st.selectbox('Select a categorical column:', cat_cols)
+        cat_cols = df.columns.tolist()
+        selected_column = st.selectbox('Select a column:', cat_cols)
 
         num_vars = df.select_dtypes(include=['int', 'float']).columns.tolist()
         # Select a categorical column
@@ -181,8 +181,8 @@ if uploaded_file is not None:
 
     elif select_method2 == "Multiclass Barplot":
         # Get the names of all columns with data type 'object' (categorical columns)
-        cat_cols = df.select_dtypes(include='object').columns.tolist()
-        selected_column = st.selectbox('Select a categorical column:', cat_cols)
+        cat_cols = df.columns.tolist()
+        selected_column = st.selectbox('Select a column:', cat_cols)
 
         # Get the names of all columns with data type 'object' (categorical variables)
         cat_vars = df.select_dtypes(include=['object']).columns.tolist()
@@ -215,8 +215,8 @@ if uploaded_file is not None:
     
     elif select_method2 == "Multi Class Density Plot":
         # Get the names of all columns with data type 'object' (categorical columns)
-        cat_cols = df.select_dtypes(include='object').columns.tolist()
-        selected_column = st.selectbox('Select a categorical column:', cat_cols)
+        cat_cols = df.columns.tolist()
+        selected_column = st.selectbox('Select a column:', cat_cols)
 
         # Get the names of all columns with data type 'object' (categorical variables)
         cat_vars = df.select_dtypes(include=['object']).columns.tolist()
@@ -256,8 +256,8 @@ if uploaded_file is not None:
 
     elif select_method2 == "Multi Class Histplot":
         # Get the names of all columns with data type 'object' (categorical columns)
-        cat_cols = df.select_dtypes(include='object').columns.tolist()
-        selected_column = st.selectbox('Select a categorical column:', cat_cols)
+        cat_cols = df.columns.tolist()
+        selected_column = st.selectbox('Select a column:', cat_cols)
 
         # Get the names of all columns with data type 'int'
         int_vars = df.select_dtypes(include=['int', 'float']).columns.tolist()
