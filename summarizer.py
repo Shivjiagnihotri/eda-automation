@@ -13,6 +13,21 @@ from tika import parser
 from transformers import pipeline
 nltk.download('punkt')
 
+# Set page title and favicon
+st.set_page_config(page_title='My Beautiful Streamlit App', page_icon='🌼')
+
+# Set a title for your app
+st.title('🌼 My Beautiful Streamlit App 🌼')
+
+# Add a subtitle
+st.header('This is a subtitle with an emoji 🚀')
+
+# Add text with markdown
+st.markdown('''
+This is a **markdown** text block. You can use markdown to format your text.
+You can also use emojis in your markdown. For example: 😊👍💻📊🚀
+''')
+
 # Summarization code
 global summarizer
 summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6")  
