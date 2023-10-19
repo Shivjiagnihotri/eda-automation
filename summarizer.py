@@ -18,7 +18,7 @@ if uploaded_file is not None:
 summarizer = pipeline("summarization", model="t5-base")  
 
 # Allow user to set summary length
-summary_length = st.slider("Select summary length", min_value=10, max_value=500, value=20)
+summary_length = st.slider("Select summary length", min_value=30, max_value=150, value=20)
 
 # Summarize 
 summary = summarizer(raw_text, max_length=summary_length)
