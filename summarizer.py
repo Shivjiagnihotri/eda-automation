@@ -17,16 +17,25 @@ nltk.download('punkt')
 st.set_page_config(page_title='My Beautiful Streamlit App', page_icon='🌼')
 
 # Set a title for your app
-st.title('🌼 My Beautiful Streamlit App 🌼')
+st.title('🌼 PDF Summarizer 🌼')
 
 # Add a subtitle
-st.header('This is a subtitle with an emoji 🚀')
+st.header('AI Powered summarization tool by Dotkonnekt 🚀')
 
 # Add text with markdown
-st.markdown('''
-This is a **markdown** text block. You can use markdown to format your text.
-You can also use emojis in your markdown. For example: 😊👍💻📊🚀
-''')
+st.markdown('''📣 Are you tired of reading through lengthy PDFs? Do you wish you could get the gist of a document in just a few sentences? Look no further! The PDF Summarizer Tool by DotKonnekt is here to revolutionize the way you consume information.
+
+This innovative tool uses advanced AI algorithms to extract key points from your PDFs, providing you with a concise summary in seconds. No more sifting through pages of text - get the information you need quickly and efficiently.
+
+Whether you're a student trying to study for an exam, a professional preparing for a meeting, or just someone who loves to learn, this tool is perfect for you. 
+
+Here's what makes our tool stand out:
+- 🚀 **Fast**: Get your summaries in seconds.
+- 🧠 **Smart**: Uses AI to understand context and extract key points.
+- 📚 **Versatile**: Perfect for academic papers, reports, books, and more.
+- 🔒 **Secure**: Your documents are safe with us. We respect your privacy.
+
+So why wait? Give the PDF Summarizer Tool by DotKonnekt a try today and experience the future of reading! 🎉😊👍💻📊🚀''')
 
 # Summarization code
 global summarizer
