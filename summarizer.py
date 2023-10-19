@@ -178,8 +178,8 @@ A real Linux operating system: develop and deploy on the same system.
 Seamless tech stack: use the tools you already love, like Visual Studio Code.
 Convenient hosting: Easily host and share your app with Community Cloud.
 GitHub's world class security: have the peace of mind that your code and networks are secure.
-
 '''
+
 
 # Allow user to upload file
 uploaded_file = st.file_uploader("Choose a file") 
