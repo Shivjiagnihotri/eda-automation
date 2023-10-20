@@ -183,34 +183,39 @@ def find_summary_transformers(pdf_path):
     else:
         st.write("Document too short to summarize!")
 
-if 'description' not in st.session_state:
-    st.session_state['description'] = ''
-
 choice = st.radio(
     "Choose input type",
     ('Text field', 'File upload')
 )
 
-if choice == 'Text field':
-    description = st.text_area('Have a story? I will summarize it for you. 😊', value=st.session_state['description'])
-elif choice == 'File upload':
-    uploaded_file = st.file_uploader("**Choose a PDF, Docx or a txt file.**")
-# summary_length = st.slider("Select summary length", min_value=30, max_value=150, value=st.session_state['summary_length'])
+def main(choice):
+    time.sleep(60)
+    if 'description' not in st.session_state:
+        st.session_state['description'] = ''
 
-if st.button('Start Summarization'):
-    if uploaded_file is not None or description:
-        if uploaded_file is not None:
-            file_details = {"Filename":uploaded_file.name, "FileSize":uploaded_file.size}
-            if uploaded_file.name.endswith(('.pdf', '.docx', '.txt')):
-                st.write(file_details)
-                summary = find_summary_transformers(uploaded_file.name)
-            else:
-                st.write("**Supported documents are PDF, Docx and txt!**")
-        if description:
-            if len(description.split()) >= 150:
-                if len(description.split()) < 50000:
-                    summary = transformers_summary(text_chunking(description))
+    if choice == 'Text field':
+        description = st.text_area('Have a story? I will summarize it for you. 😊', value=st.session_state['description'])
+    elif choice == 'File upload':
+        uploaded_file = st.file_uploader("**Choose a PDF, Docx or a txt file.**")
+    # summary_length = st.slider("Select summary length", min_value=30, max_value=150, value=st.session_state['summary_length'])
+
+    if st.button('Start Summarization'):
+        if uploaded_file is not None or description:
+            if uploaded_file is not None:
+                file_details = {"Filename":uploaded_file.name, "FileSize":uploaded_file.size}
+                if uploaded_file.name.endswith(('.pdf', '.docx', '.txt')):
+                    st.write(file_details)
+                    summary = find_summary_transformers(uploaded_file.name)
                 else:
-                    st.write("Your text exceeds the 50,000 words limit. Please shorten your text.")
-            else:
-                st.write("**Too short to Summarize!**")
+                    st.write("**Supported documents are PDF, Docx and txt!**")
+            if description:
+                if len(description.split()) >= 150:
+                    if len(description.split()) < 50000:
+                        summary = transformers_summary(text_chunking(description))
+                    else:
+                        st.write("Your text exceeds the 50,000 words limit. Please shorten your text.")
+                else:
+                    st.write("**Too short to Summarize!**")
+
+while True:
+    main(choice)
