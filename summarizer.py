@@ -1,8 +1,8 @@
+import streamlit as st
 # Tika setup
 from tika import parser
 from transformers import pipeline
 # Streamlit UI
-import streamlit as st
 import warnings
 warnings.simplefilter('ignore')
 import nltk
